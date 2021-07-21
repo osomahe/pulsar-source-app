@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Apache Pulsar Source App">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="pulsar">
+
+    <!-- Title Page-->
+    <title>Apache Pulsar Source App</title>
+
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+</head>
+
+<body>
+<div class="page-wrapper bg-dark p-t-100 p-b-50">
+    <div class="wrapper wrapper--w900">
+        <div class="card card-6">
+            <div class="card-heading">
+                <h2 class="title">Pulsar Source App</h2>
+            </div>
+            <form method="POST" id="string-messages" name="string-messages">
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="name">Topic name</div>
+                        <div class="value">
+                            <input class="input--style-6" type="text" name="topic-name" id="topic-name" placeholder="persistent://my-tenant/my-namespace/my-topic" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">String data</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <textarea class="textarea--style-6" name="message-data" id="message-data" placeholder="&#123;&#10;&#32;&#32;&#34;&#116;&#121;&#112;&#101;&#34;&#58;&#32;&#34;&#99;&#117;&#114;&#114;&#101;&#110;&#99;&#121;&#45;&#99;&#114;&#101;&#97;&#116;&#101;&#100;&#34;&#44;&#10;&#32;&#32;&#34;&#100;&#97;&#116;&#97;&#34;&#58;&#32;&#123;&#10;&#32;&#32;&#32;&#32;&#34;&#99;&#117;&#114;&#114;&#101;&#110;&#99;&#121;&#73;&#68;&#34;&#58;&#32;&#34;&#67;&#90;&#75;&#34;&#44;&#10;&#32;&#32;&#32;&#32;&#34;&#110;&#97;&#109;&#101;&#34;&#58;&#32;&#34;&#268;&#101;&#115;&#107;&#225;&#32;&#107;&#111;&#114;&#117;&#110;&#97;&#34;&#44;&#10;&#32;&#32;&#32;&#32;&#34;&#108;&#111;&#99;&#97;&#108;&#67;&#111;&#100;&#101;&#34;&#58;&#32;&#34;&#75;&#269;&#34;&#44;&#10;&#32;&#32;&#32;&#32;&#34;&#108;&#111;&#99;&#97;&#108;&#78;&#97;&#109;&#101;&#34;&#58;&#32;&#34;&#268;&#101;&#115;&#107;&#225;&#32;&#107;&#111;&#114;&#117;&#110;&#97;&#34;&#10;&#32;&#32;&#32;&#125;&#10;&#125;" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn--radius-2 btn--blue-2" type="submit" id="btn-send">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Jquery JS-->
+<script src="vendor/jquery/jquery.min.js"></script>
+
+
+<!-- Main JS-->
+<script src="js/global.js"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
