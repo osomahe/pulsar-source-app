@@ -40,7 +40,7 @@ public class MessageService {
                 .topic(getFullTopicName(topicName))
                 .create()) {
             MessageId messageId = producer.send(messageData);
-            log.debugf("Successfully written message: {}", messageId);
+            log.debugf("Successfully written message: %s", messageId);
         } catch (PulsarClientException e) {
             throw new CannotWritePulsarMessageException(topicName, messageData, e);
         }
