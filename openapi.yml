@@ -1,0 +1,32 @@
+---
+openapi: 3.0.3
+info:
+  title: Generated API
+  version: "1.0"
+paths:
+  /string-messages:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageInfo'
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    MessageInfo:
+      type: object
+      properties:
+        topic:
+          type: string
+          nullable: false
+          description: Name of topic where the data will be written. Allowed formats are simple 'my-topic' or full 'persistent://my-tenant/my-namespace/my-topic'
+        data:
+          type: string
+          nullable: false
+          description: Data which will be written into a topic as string.
+        producer:
+          type: string
+          description: Producer name of the data. This attribute is optional.
