@@ -13,19 +13,15 @@ import java.util.concurrent.TimeUnit;
 public class MessageService {
     private static final Logger log = Logger.getLogger(MessageService.class);
 
-    @Inject
     @ConfigProperty(name = "pulsar.default.producer")
     String defaultProducer;
 
-    @Inject
     @ConfigProperty(name = "pulsar.default.type")
     String defaultType;
 
-    @Inject
     @ConfigProperty(name = "pulsar.default.tenant")
     String defaultTenant;
 
-    @Inject
     @ConfigProperty(name = "pulsar.default.namespace")
     String defaultNamespace;
 

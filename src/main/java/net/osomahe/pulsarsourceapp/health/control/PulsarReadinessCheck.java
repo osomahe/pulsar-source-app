@@ -19,7 +19,6 @@ public class PulsarReadinessCheck implements HealthCheck {
 
     private static final Logger log = Logger.getLogger(PulsarReadinessCheck.class);
 
-    @Inject
     @ConfigProperty(name = "pulsar.service-url")
     String serviceUrl;
 
