@@ -7,13 +7,16 @@ import org.junit.jupiter.api.Test;
 public class TopicValidatorTest {
 
     private String[] ALLOWED_TOPIC_NAMES = {
-            "persistent://public/default", "persistent://public/default", "default"
+            "persistent://public/default/my-topic", "persistent://public/default/my-topic", "default",
+            "non-persistent://public/default/my-topic", "non-persistent://public/default/my-topic"
     };
 
     private String[] NOT_ALLOWED_TOPIC_NAMES = {
-            "ersistent://public/default", "persistent://public", "persistent://public//default",
+            null, "",
+            "ersistent://public/default/my-topic", "persistent://public", "persistent://public//default",
             "public/default", "persistent://public/default/", "persistent:///public/default",
-            "/default", "default/"
+            "/default", "default/", "persistent://public/default", "non-persistent://public/default/",
+            "persistent:///public/default/my-topic", "persistent://public/default/my-topic/"
     };
 
     private TopicValidator instance = new TopicValidator();

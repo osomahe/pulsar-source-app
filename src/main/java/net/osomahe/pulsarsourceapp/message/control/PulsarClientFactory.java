@@ -22,12 +22,12 @@ public class PulsarClientFactory {
 
     @ConfigProperty(name = "pulsar.tls-trust-cert")
     Optional<String> tlsTrustCert;
-    /*@Inject
+
     @ConfigProperty(name = "pulsar.tls-cert-file")
-    String tlsCertFile;
-    @Inject
+    Optional<String> tlsCertFile;
+
     @ConfigProperty(name = "pulsar.tls-key-file")
-    String tlsKeyFile;*/
+    Optional<String> tlsKeyFile;
 
     PulsarClient pulsarClient;
 
@@ -37,15 +37,16 @@ public class PulsarClientFactory {
             if (tlsTrustCert.isPresent()) {
                 clientBuilder = clientBuilder.tlsTrustCertsFilePath(tlsTrustCert.get());
             }
-            ;
+            if (tlsCertFile.isPresent() && tlsKeyFile.isPresent()) {
+                clientBuilder = clientBuilder.authentication(
+                        "org.apache.pulsar.client.impl.auth.AuthenticationTls",
+                        "tlsCertFile:" + tlsCertFile.get() + ",tlsKeyFile:" + tlsKeyFile.get()
+                );
+            }
+
             this.pulsarClient = clientBuilder.build();
-                    /*.tlsTrustCertsFilePath(tlsTrustCertsFile)
-                    .authentication(
-                            "org.apache.pulsar.client.impl.auth.AuthenticationTls",
-                            "tlsCertFile:" + tlsCertFile + ",tlsKeyFile:" + tlsKeyFile
-                    )*/
         } catch (PulsarClientException e) {
-            e.printStackTrace();
+            log.error("Cannot create PulsarClient instance for service url: " + serviceUrl);
         }
     }
 

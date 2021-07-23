@@ -1,5 +1,8 @@
 # Releases
 
+## 0.3.0 (2021-07-23)
+* Authentication using TLS
+
 ## 0.2.0 (2021-07-22)
 * Transport Encryption using TLS
 

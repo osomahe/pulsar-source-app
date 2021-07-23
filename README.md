@@ -47,10 +47,20 @@ apachepulsar/pulsar:2.8.0 \
 bin/pulsar standalone
 ```
 
-Start Apache Pulsar instance with ssl.
+Start Apache Pulsar instance with transport tls on.
 ```bash
 docker run -d --rm --name pulsar -p 6651:6651 \
 -v $(pwd)/development/pulsar/certs:/pulsar/certs:ro \
--v $(pwd)/development/pulsar/conf:/pulsar/conf:ro \
-apachepulsar/pulsar:2.8.0 bin/pulsar standalone
+-v $(pwd)/development/pulsar/conf-transport-tls:/pulsar/conf:ro \
+apachepulsar/pulsar:2.8.0 bin/pulsar standalone -nfw
+```
+
+Start Apache Pulsar instance with tls authorization.
+```bash
+docker run -d --rm --name pulsar -p 6651:6651 \
+-v $(pwd)/development/pulsar/certs:/pulsar/certs:ro \
+-v $(pwd)/development/pulsar/conf-auth-tls:/pulsar/conf:ro \
+apachepulsar/pulsar:2.8.0 bin/pulsar standalone -nfw
+
+docker exec -i pulsar bin/pulsar-admin namespaces grant-permission public/default --actions produce,consume --role pulsar-source-app
 ```
