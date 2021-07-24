@@ -14,6 +14,8 @@ Environment variables:
 
 * **PULSAR_SERVICE_URL** - default "pulsar://localhost:6650" url to connect to Apache Pulsar instance
 * **PULSAR_TLS_TRUST_CERT** - not set by default, used for transport encryption using tLS certificate e.g. `/pulsar/certs/ca.cert.pem`
+* **PULSAR_TLS_CERT_FILE** - not set by default, path for client certificate for TLS authorization `/pulsar/certs/pulsar-source-app.cert.pem`
+* **PULSAR_TLS_KEY_FILE** - not set by default, path for client key to certificate for TLS authorization `/pulsar/certs/pulsar-source-app.key-pk8.pem`
   
 Other environment variables:
 
@@ -24,7 +26,7 @@ Other environment variables:
 
 Examples:
 ```bash
-docker run -d --name pulsar-source-app -p 8080:8080 -e PULSAR_SERVICE_URL="pulsar://localhost:6650" osomahe/pulsar-source-app
+docker run -d --name pulsar-source-app -p 8080:8080 -e PULSAR_SERVICE_URL="pulsar://pulsarhostname:6650" osomahe/pulsar-source-app
 ```
 
 ### Health checks
