@@ -22,6 +22,10 @@ public class PulsarReadinessCheck implements HealthCheck {
     @ConfigProperty(name = "pulsar.service-url")
     String serviceUrl;
 
+
+    @ConfigProperty(name = "pulsar.health.topic")
+    String healthTopic;
+
     @Inject
     PulsarClient pulsarClient;
 
@@ -33,7 +37,7 @@ public class PulsarReadinessCheck implements HealthCheck {
     public HealthCheckResponse call() {
         if (producer == null) {
             try {
-                producer = pulsarClient.newProducer().topic("health-check").create();
+                producer = pulsarClient.newProducer().topic(healthTopic).create();
             } catch (PulsarClientException e) {
                 log.warnf("Cannot connect to Apache Pulsar on url: %s", serviceUrl);
             }
