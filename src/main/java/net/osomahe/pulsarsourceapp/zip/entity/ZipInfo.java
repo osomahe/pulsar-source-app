@@ -1,22 +1,23 @@
-package net.osomahe.pulsarsourceapp.message.entity;
+package net.osomahe.pulsarsourceapp.zip.entity;
+
+import net.osomahe.pulsarsourceapp.message.entity.TopicName;
 
 import javax.validation.constraints.NotEmpty;
 import java.util.StringJoiner;
 
-public class MessageInfo {
+public class ZipInfo {
     @TopicName
     public String topic;
     @NotEmpty
-    public String data;
+    public String zipBase64;
 
     public String producer;
 
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", MessageInfo.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", ZipInfo.class.getSimpleName() + "[", "]")
                 .add("topic='" + topic + "'")
-                .add("data='" + data + "'")
                 .add("producer='" + producer + "'")
                 .toString();
     }

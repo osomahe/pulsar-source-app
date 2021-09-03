@@ -1,6 +1,9 @@
 # Releases
 
-## 0.1.1 (2021-07-27)
+## 0.4.0 (2021-09-03)
+* upload messages from zip file
+
+## 0.3.1 (2021-07-27)
 * better readiness health check with topic configuration
 
 ## 0.3.0 (2021-07-23)

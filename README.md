@@ -67,3 +67,9 @@ apachepulsar/pulsar:2.8.0 bin/pulsar standalone -nfw
 
 docker exec -i pulsar bin/pulsar-admin namespaces grant-permission public/default --actions produce,consume --role pulsar-source-app
 ```
+
+Manual build of Docker image, because Docker Hub stop allowing automated build for public projects.
+```bash
+docker build -t osomahe/pulsar-source-app:0.4.0 .
+docker push osomahe/pulsar-source-app:0.4.0
+```

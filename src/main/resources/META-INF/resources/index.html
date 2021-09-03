@@ -13,7 +13,8 @@
     <title>Apache Pulsar Source App</title>
 
     <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+          rel="stylesheet">
 
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
@@ -31,15 +32,31 @@
                     <div class="form-row">
                         <div class="name">Topic name</div>
                         <div class="value">
-                            <input class="input--style-6" type="text" name="topic-name" id="topic-name" placeholder="persistent://my-tenant/my-namespace/my-topic" required>
+                            <input class="input--style-6" type="text" name="topic-name" id="topic-name"
+                                   placeholder="persistent://my-tenant/my-namespace/my-topic" required>
                         </div>
                     </div>
-                    <div class="form-row">
+                    <div class="form-row" id="row-string">
                         <div class="name">String data</div>
                         <div class="value">
                             <div class="input-group">
-                                <textarea class="textarea--style-6" name="message-data" id="message-data" placeholder="&#123;&#10;&#32;&#32;&#34;&#116;&#121;&#112;&#101;&#34;&#58;&#32;&#34;&#99;&#117;&#114;&#114;&#101;&#110;&#99;&#121;&#45;&#99;&#114;&#101;&#97;&#116;&#101;&#100;&#34;&#44;&#10;&#32;&#32;&#34;&#100;&#97;&#116;&#97;&#34;&#58;&#32;&#123;&#10;&#32;&#32;&#32;&#32;&#34;&#99;&#117;&#114;&#114;&#101;&#110;&#99;&#121;&#73;&#68;&#34;&#58;&#32;&#34;&#67;&#90;&#75;&#34;&#44;&#10;&#32;&#32;&#32;&#32;&#34;&#110;&#97;&#109;&#101;&#34;&#58;&#32;&#34;&#268;&#101;&#115;&#107;&#225;&#32;&#107;&#111;&#114;&#117;&#110;&#97;&#34;&#44;&#10;&#32;&#32;&#32;&#32;&#34;&#108;&#111;&#99;&#97;&#108;&#67;&#111;&#100;&#101;&#34;&#58;&#32;&#34;&#75;&#269;&#34;&#44;&#10;&#32;&#32;&#32;&#32;&#34;&#108;&#111;&#99;&#97;&#108;&#78;&#97;&#109;&#101;&#34;&#58;&#32;&#34;&#268;&#101;&#115;&#107;&#225;&#32;&#107;&#111;&#114;&#117;&#110;&#97;&#34;&#10;&#32;&#32;&#32;&#125;&#10;&#125;" required></textarea>
+                                <textarea class="textarea--style-6" onchange="rowVisibity()" oninput="rowVisibity()"
+                                          onreset="rowVisibity()" name="message-data" id="message-data"
+                                          placeholder="&#123;&#10;&#32;&#32;&#34;&#116;&#121;&#112;&#101;&#34;&#58;&#32;&#34;&#99;&#117;&#114;&#114;&#101;&#110;&#99;&#121;&#45;&#99;&#114;&#101;&#97;&#116;&#101;&#100;&#34;&#44;&#10;&#32;&#32;&#34;&#100;&#97;&#116;&#97;&#34;&#58;&#32;&#123;&#10;&#32;&#32;&#32;&#32;&#34;&#99;&#117;&#114;&#114;&#101;&#110;&#99;&#121;&#73;&#68;&#34;&#58;&#32;&#34;&#67;&#90;&#75;&#34;&#44;&#10;&#32;&#32;&#32;&#32;&#34;&#110;&#97;&#109;&#101;&#34;&#58;&#32;&#34;&#268;&#101;&#115;&#107;&#225;&#32;&#107;&#111;&#114;&#117;&#110;&#97;&#34;&#44;&#10;&#32;&#32;&#32;&#32;&#34;&#108;&#111;&#99;&#97;&#108;&#67;&#111;&#100;&#101;&#34;&#58;&#32;&#34;&#75;&#269;&#34;&#44;&#10;&#32;&#32;&#32;&#32;&#34;&#108;&#111;&#99;&#97;&#108;&#78;&#97;&#109;&#101;&#34;&#58;&#32;&#34;&#268;&#101;&#115;&#107;&#225;&#32;&#107;&#111;&#114;&#117;&#110;&#97;&#34;&#10;&#32;&#32;&#32;&#125;&#10;&#125;"
+                                          required></textarea>
                             </div>
+                        </div>
+                    </div>
+                    <div class="form-row" id="row-file">
+                        <div class="name">Upload zip</div>
+                        <div class="value">
+                            <div class="input-group js-input-file">
+                                <input class="input-file" type="file" name="file-zip" id="file-zip"
+                                       onchange="rowVisibity()" accept="application/zip" required>
+                                <label class="label--file" for="file-zip">Choose file</label>
+                                <span class="input-file__info">No file chosen</span>
+                            </div>
+                            <div class="label--desc">Upload your zip archive containing messages for topic</div>
                         </div>
                     </div>
                 </div>

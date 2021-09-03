@@ -1,7 +1,8 @@
-package net.osomahe.pulsarsourceapp.string.boundary;
+package net.osomahe.pulsarsourceapp.zip.boundary;
 
 import net.osomahe.pulsarsourceapp.message.boundary.MessageService;
-import net.osomahe.pulsarsourceapp.string.entity.StringInfo;
+import net.osomahe.pulsarsourceapp.zip.control.ZipService;
+import net.osomahe.pulsarsourceapp.zip.entity.ZipInfo;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -11,16 +12,16 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path(("/string-messages"))
-public class StringResource {
+@Path(("/zip-messages"))
+public class ZipResource {
 
     @Inject
-    MessageService service;
+    ZipService service;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response writeData(@Valid StringInfo info) {
-        service.writeStringMessage(info.topic, info.data, info.producer);
+    public Response writeZipData(@Valid ZipInfo info) {
+        service.writeZipData(info);
         return Response.ok().build();
     }
 }
