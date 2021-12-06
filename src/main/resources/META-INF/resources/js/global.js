@@ -114,3 +114,14 @@ const toBase64 = file => new Promise((resolve, reject) => {
     }
 
 })(jQuery);
+
+$(document).ready(function () {
+    $.ajax({
+        type: "GET",
+        url: "/info",
+    }).done(function (data) {
+        $('#version').html('(' + data.version + ')');
+    }).fail(function (data) {
+        $('#version').html("(unknown)");
+    });
+});
