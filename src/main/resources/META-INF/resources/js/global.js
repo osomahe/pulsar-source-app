@@ -6,6 +6,7 @@ $(document).ready(function () {
         const file = $("#file-zip")[0].files[0];
         let formData;
         let url;
+        let jsonValid;
         if (file) {
             url = "/zip-messages"
             formData = {
@@ -18,7 +19,16 @@ $(document).ready(function () {
                 topic: $("#topic-name").val(),
                 data: $("#message-data").val()
             };
+            jsonValid = $("#json-valid").is(':checked');
+            localStorage.setItem("jsonValid", jsonValid);
+            if(jsonValid && !isValidJson(formData.data)){
+                alert("JSON is not valid");
+                $("#btn-send").prop('disabled', false);
+                return;
+            }
         }
+
+        localStorage.setItem("topicName", formData.topic);
 
 
         $.ajax({
@@ -31,6 +41,10 @@ $(document).ready(function () {
             $("#btn-send").prop('disabled', false);
             $('#string-messages').trigger("reset");
             $('.input-file__info').text("No file chosen");
+            $("#topic-name").val(formData.topic);
+            if (jsonValid) {
+                $("#json-valid").prop('checked', jsonValid);
+            }
             rowVisibity();
         }).fail(function (data) {
             $("#btn-send").prop('disabled', false);
@@ -39,7 +53,25 @@ $(document).ready(function () {
         });
 
     });
+
+    let storageTopicName = localStorage.getItem("topicName");
+    if(storageTopicName && storageTopicName !== "undefined"){
+        $("#topic-name").val(storageTopicName);
+    }
+    let storageJsonValid = localStorage.getItem("jsonValid");
+    if(storageJsonValid && storageJsonValid !== "undefined"){
+        $("#json-valid").prop('checked', storageJsonValid);
+    }
 });
+
+const isValidJson = (json) => {
+    try {
+        JSON.parse(json);
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
 
 const rowVisibity = () => {
     const file = $("#file-zip")[0].files[0];

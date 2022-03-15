@@ -1,5 +1,9 @@
 # Releases
 
+## 1.0.0 (2022-03-15)
+* json validation
+* remember topic name
+
 ## 0.4.0 (2021-09-03)
 * upload messages from zip file
 
