@@ -36,7 +36,9 @@ jobs:
         id: build-and-push
         env:
           IMAGE: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+          IMAGE_LATEST: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
         run: |
           docker build -f Dockerfile -t ${{ env.IMAGE }} .
+          docker tag ${{ env.IMAGE }} ${{ env.IMAGE_LATEST }}
           docker push ${{ env.IMAGE }}
-          docker tag 
+          docker push ${{ env.IMAGE_LATEST }}
