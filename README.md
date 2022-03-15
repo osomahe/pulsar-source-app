@@ -6,7 +6,7 @@ REST API documentation is available [openapi.yml](openapi.yml) file.
 
 ## Installation
 
-For simple start up you can use Docker image [https://hub.docker.com/repository/docker/osomahe/pulsar-source-app](https://hub.docker.com/repository/docker/osomahe/pulsar-source-app).
+For simple start up you can use Docker image [https://github.com/osomahe/pulsar-source-app/pkgs/container/pulsar-source-app](https://github.com/osomahe/pulsar-source-app/pkgs/container/pulsar-source-app).
 
 Release notes can be found at [releases.md](releases.md). 
 
@@ -27,7 +27,7 @@ Other environment variables:
 
 Examples:
 ```bash
-docker run -d --name pulsar-source-app -p 8080:8080 -e PULSAR_SERVICE_URL="pulsar://pulsarhostname:6650" osomahe/pulsar-source-app
+docker run -d --name pulsar-source-app -p 8080:8080 -e PULSAR_SERVICE_URL="pulsar://pulsarhostname:6650" ghcr.io/osomahe/pulsar-source-app
 ```
 
 ### Health checks
@@ -66,10 +66,4 @@ docker run -d --rm --name pulsar -p 6651:6651 \
 apachepulsar/pulsar:2.8.0 bin/pulsar standalone -nfw
 
 docker exec -i pulsar bin/pulsar-admin namespaces grant-permission public/default --actions produce,consume --role pulsar-source-app
-```
-
-Manual build of Docker image, because Docker Hub stop allowing automated build for public projects.
-```bash
-docker build -t osomahe/pulsar-source-app:0.4.0 .
-docker push osomahe/pulsar-source-app:0.4.0
 ```

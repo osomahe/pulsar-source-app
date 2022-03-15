@@ -39,4 +39,4 @@ jobs:
         run: |
           docker build -f Dockerfile -t ${{ env.IMAGE }} .
           docker push ${{ env.IMAGE }}
-          echo "::set-output name=digest::$(docker inspect --format='{{index .RepoDigests 0}}' ${{ env.IMAGE }} | cut -d'@' -f2)"
+          docker tag 
